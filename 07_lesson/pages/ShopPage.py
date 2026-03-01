@@ -9,7 +9,7 @@ class ShopPage:
         self.driver = driver
         self.driver.get("https://www.saucedemo.com/")
         self.driver.implicitly_wait(4)
-        self.driver.maximize_window
+        self.driver.maximize_window()
 
     def open(self, browser):
         user_name_field = WebDriverWait(browser, 10).until(
@@ -41,4 +41,5 @@ class ShopPage:
 
         self.driver.find_element(By.ID, "continue").click()
 
-        self.driver.find_element(By.CLASS_NAME, "summary_total_label")
+        return self.driver.find_element(By.CLASS_NAME, "summary_total_label")
+
