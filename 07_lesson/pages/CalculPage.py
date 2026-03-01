@@ -10,7 +10,7 @@ class CalculPage:
         self.driver.get(
             "https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html")
         self.driver.implicitly_wait(4)
-        self.driver.maximize_window
+        self.driver.maximize_window()
 
     def delay(self):
         self.driver.find_element(By.CSS_SELECTOR, "#delay").clear()
@@ -25,4 +25,5 @@ class CalculPage:
     def result(self, driver):
         WebDriverWait(driver, 50).until(EC.text_to_be_present_in_element(
             (By.CSS_SELECTOR, ".screen"), "15"))
-        self.driver.find_element(By.CSS_SELECTOR, ".screen").text
+        return self.driver.find_element(By.CSS_SELECTOR, ".screen").text
+
