@@ -22,8 +22,9 @@ class CalculPage:
         self.driver.find_element(By.XPATH, "//span[text()='8']").click()
         self.driver.find_element(By.XPATH, "//span[text()='=']").click()
 
-    def result(self, driver):
+    def result(self):
         WebDriverWait(driver, 50).until(EC.text_to_be_present_in_element(
             (By.CSS_SELECTOR, ".screen"), "15"))
         return self.driver.find_element(By.CSS_SELECTOR, ".screen").text
+
 
