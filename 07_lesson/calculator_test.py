@@ -13,4 +13,5 @@ def test_calculator():
     calcul_page.knopka()
     itog = calcul_page.result('driver')
 
-    assert itog == 15
+    assert itog == "15"
+
