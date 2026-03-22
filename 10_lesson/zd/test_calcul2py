@@ -1,0 +1,37 @@
+import pytest
+from selenium import webdriver
+from pages import CalculPage
+import allure
+
+
+@pytest.fixture
+def driver():
+    """
+    Фикстура для инициализации и завершения работы драйвера.
+    """
+    driver = webdriver.Chrome()
+    driver.maximize_window()
+    yield driver
+    driver.quit()
+
+
+@allure.feature("Тестирование калькулятора с задержкой")
+class TestCalculator:
+    """Тесты для проверки функциональности калькулятора."""
+
+    @allure.title("Проверка сложения 7 + 8 с задержкой 50 с")
+    @allure.description("Проверяет, что калькулятор выполняет сложение")
+    @allure.severity(allure.severity_level.CRITICAL)
+    def test_addition_with_delay(self, driver):
+        """Тест сложения чисел 7 и 8 с установкой задержки."""
+        calc_page = CalculPage(driver)
+
+        with allure.step("Устанавливаем задержку 50 секунд"):
+            calc_page.set_delay("50")
+
+        with allure.step("Выполняем расчёт: 7 + 8 ="):
+            calc_page.perform_calculation()
+
+        with allure.step("Проверяем, что результат равен 15"):
+            result = calc_page.get_result()
+            assert result == "15", f"Ожидался результат '15', но получен '{result}'"
