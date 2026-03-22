@@ -34,4 +34,5 @@ class TestCalculator:
 
         with allure.step("Проверяем, что результат равен 15"):
             result = calc_page.get_result()
-            assert result == "15", f"Ожидался результат '15', но получен '{result}'"
+            assert result == "15", f"Ожидался результат '15', но получен \
+                '{result}'"
